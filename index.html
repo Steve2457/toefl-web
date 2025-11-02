@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOEFL Reading Practice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Upload -->
+        <div id="upload-section" class="section">
+            <h1>TOEFL Reading Practice</h1>
+            <div class="upload-area">
+                <h2>Upload Passage Files</h2>
+                <p>Support 1-2 Word documents (.docx)</p>
+                <div class="file-inputs">
+                    <div class="file-input-wrapper">
+                        <label for="file1" class="file-label">
+                            <span class="file-icon">📄</span>
+                            <span class="file-text">Choose File 1</span>
+                            <input type="file" id="file1" accept=".docx" hidden>
+                        </label>
+                        <span id="file1-name" class="file-name"></span>
+                    </div>
+                    <div class="file-input-wrapper">
+                        <label for="file2" class="file-label">
+                            <span class="file-icon">📄</span>
+                            <span class="file-text">Choose File 2 (optional)</span>
+                            <input type="file" id="file2" accept=".docx" hidden>
+                        </label>
+                        <span id="file2-name" class="file-name"></span>
+                    </div>
+                </div>
+                <div class="timer-options" style="margin-top: 20px; padding: 15px; background: #f5f5f5; border-radius: 8px;">
+                    <h3 style="margin-top: 0;">Timer Settings</h3>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: flex; align-items: center; margin-bottom: 8px;">
+                            <input type="radio" name="timer-mode" value="normal" checked style="margin-right: 8px;">
+                            <span>Normal Timer (Count Up)</span>
+                        </label>
+                        <label style="display: flex; align-items: center;">
+                            <input type="radio" name="timer-mode" value="countdown" style="margin-right: 8px;">
+                            <span>Countdown Timer</span>
+                        </label>
+                    </div>
+                    <div id="countdown-settings" style="display: none;">
+                        <label>Duration (minutes):
+                            <input type="number" id="countdown-minutes" min="1" max="120" value="60" style="width: 60px; padding: 5px; margin-left: 5px;">
+                        </label>
+                    </div>
+                </div>
+                <button id="start-btn" class="btn btn-primary" disabled>Start</button>
+                <button id="history-btn" class="btn btn-secondary">History</button>
+            </div>
+        </div>
+
+        <!-- Exam -->
+        <div id="exam-section" class="section hidden">
+            <div class="exam-header">
+                <div class="timer">
+                    <span class="timer-label">Time: </span>
+                    <span id="timer-display">00:00:00</span>
+                </div>
+                <button id="submit-btn" class="btn btn-danger">Submit</button>
+                <button id="pause-btn" class="btn btn-warning">Pause</button>
+            </div>
+            
+            <div class="exam-content">
+                <!-- Reading -->
+                <div class="reading-panel">
+                    <div class="panel-header">
+                        <span id="reading-title">Reading</span>
+                    </div>
+                    <div id="reading-content" class="panel-content"></div>
+                    <div id="passage-nav" class="passage-nav hidden">
+                        <button id="prev-passage-btn" class="btn btn-secondary btn-small">Prev Passage</button>
+                        <button id="next-passage-btn" class="btn btn-secondary btn-small">Next Passage</button>
+                    </div>
+                </div>
+
+                <!-- Questions -->
+                <div class="question-panel">
+                    <div class="panel-header">
+                        <span>Question <span id="question-number">1</span> / <span id="total-questions">0</span></span>
+                    </div>
+                    <div class="panel-content">
+                        <div id="question-content" class="question-content"></div>
+                        <div id="options-container" class="options-container"></div>
+                        <div class="navigation-buttons">
+                            <button id="prev-btn" class="btn btn-secondary">Prev</button>
+                            <button id="next-btn" class="btn btn-secondary">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div id="result-section" class="section hidden">
+            <h1>Results</h1>
+            <div class="result-summary">
+                <div class="result-item">
+                    <span class="result-label">Total:</span>
+                    <span id="result-total">0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Answered:</span>
+                    <span id="result-answered">0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Time:</span>
+                    <span id="result-time">00:00:00</span>
+                </div>
+            </div>
+            <div id="result-answers-list" class="answers-list"></div>
+            <button id="restart-btn" class="btn btn-primary">Restart</button>
+        </div>
+
+        <!-- History -->
+        <div id="history-section" class="section hidden">
+            <h1>History</h1>
+            <div id="history-list" class="history-list"></div>
+            <div class="history-actions">
+                <button id="clear-history-btn" class="btn btn-danger">Clear History</button>
+                <button id="back-to-upload-btn" class="btn btn-secondary">Back</button>
+            </div>
+        </div>
+
+        <!-- History Details -->
+        <div id="history-detail-section" class="section hidden">
+            <div class="exam-header">
+                <h1>History Details</h1>
+                <button id="back-to-history-btn" class="btn btn-primary">Back to History</button>
+            </div>
+            
+            <div class="result-summary">
+                <div class="result-item">
+                    <span class="result-label">Date:</span>
+                    <span id="history-detail-date"></span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Title:</span>
+                    <span id="history-detail-title"></span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Total:</span>
+                    <span id="history-detail-total">0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Answered:</span>
+                    <span id="history-detail-answered">0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Time:</span>
+                    <span id="history-detail-time">00:00:00</span>
+                </div>
+            </div>
+
+            <div class="exam-content">
+                <!-- Reading Panel (for history) -->
+                <div class="reading-panel">
+                    <div class="panel-header">
+                        <span id="history-reading-title">Reading</span>
+                    </div>
+                    <div id="history-reading-content" class="panel-content"></div>
+                    <div id="history-passage-nav" class="passage-nav hidden">
+                        <button id="history-prev-passage-btn" class="btn btn-secondary btn-small">Prev Passage</button>
+                        <button id="history-next-passage-btn" class="btn btn-secondary btn-small">Next Passage</button>
+                    </div>
+                </div>
+                <!-- Question Panel (for history) -->
+                <div class="question-panel">
+                    <div class="panel-header">
+                        <span>Questions & Answers</span>
+                    </div>
+                    <div id="history-detail-answers-list" class="answers-list panel-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入mammoth.js用于解析Word文档 -->
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
