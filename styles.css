@@ -178,15 +178,20 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background: #f5f5f5;
-    border-radius: 4px;
     margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.exam-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .timer {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 1.2em;
+    font-weight: bold;
     color: #333;
 }
 
@@ -540,5 +545,20 @@ mark {
     border-bottom: 1px solid #ddd;
     padding-bottom: 15px;
     margin-bottom: 15px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #555;
+    padding: 5px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.btn-icon:hover {
+    color: #000;
 }
 

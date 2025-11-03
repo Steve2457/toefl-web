@@ -10,9 +10,18 @@ A web application for simulating the TOEFL reading exam. Supports uploading Word
 - ⏱️ **Timer**: Real-time display of exam time
 - 📊 **Result Review**: View all answers and results after submission
 
+## Screenshots
+
+![TOEFL Reading Simulation Screenshot](pic/demo.png)
+*Figure 1: Screenshot of the TOEFL Reading Simulation Exam System interface, showing the dual-column layout with reading passage and questions.*
+
+
+![TOEFL Reading Simulation Screenshot](pic/home.png)
+*Figure 2: Screenshot of the home page, showing the document upload interface.*
+
 ## How to Use
 
-1. Open the `index.html` file directly in your browser
+1. Right-click on `index.html` and open with Live Server (or use another local server extension in your editor)
 2. Click the "Choose Document" button to upload a Word document (`.docx` format supported)
 3. Optionally, upload a second document
 4. Click the "Start Exam" button to enter the answering interface
@@ -39,4 +48,6 @@ A web application for simulating the TOEFL reading exam. Supports uploading Word
 - Ensure the Word document format is correct and options are clearly marked
 - Parsing depends on document formatting; if parsing fails, please check your document format
 - Chrome is recommended for the best experience
+
+**If this project helps you, please ⭐ star and fork it!**
 

@@ -62,8 +62,11 @@
                     <span class="timer-label">Time: </span>
                     <span id="timer-display">00:00:00</span>
                 </div>
-                <button id="submit-btn" class="btn btn-danger">Submit</button>
-                <button id="pause-btn" class="btn btn-warning">Pause</button>
+                <div class="exam-controls">
+                    <button id="abandon-btn" class="btn btn-icon" title="Abandon and go back">&#8629;</button>
+                    <button id="pause-btn" class="btn btn-icon" title="Pause">&#10074;&#10074;</button>
+                    <button id="submit-btn" class="btn btn-danger">Submit</button>
+                </div>
             </div>
             
             <div class="exam-content">
@@ -182,7 +185,7 @@
 
     <!-- 引入mammoth.js用于解析Word文档 -->
     <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="src/main.js"></script>
 </body>
 </html>
 
